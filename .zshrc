@@ -1,3 +1,4 @@
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/bus
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -83,7 +84,8 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Alias
-alias nvim='nvim $(fzf -m --preview "bat --color=always {}")'
+# alias nvim='nvim $(fzf -m --preview "bat --color=always {}")'
+alias nvim='nvim'
 alias c='clear'
 alias ls='exa'
 alias la='exa --long --header --all'
@@ -120,5 +122,35 @@ function yy() {
 
 bindkey -v
 
-nerdfetch
+alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
+alias nvim-kick="NVIM_APPNAME=kickstart nvim"
+alias nvim-chad="NVIM_APPNAME=NvChad nvim"
+alias nvim-astro="NVIM_APPNAME=AstroNvim nvim"
+alias nvim-yamada="NVIM_APPNAME=Yamada5131 nvim"
 
+function nvims() {
+  items=$(find $HOME/.config -maxdepth 2 -name "init.lua" -type f -execdir sh -c 'pwd | xargs basename' \;)
+  selected=$(printf "%s\n" "${items[@]}" | FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS-} --preview-window 'right:border-left:50%:<40(right:border-left:50%:hidden)' --preview 'lsd -l -A --tree --depth=1 --color=always --blocks=size,name ~/.config/{} | head -200'" fzf )
+  if [[ -z $selected ]]; then
+    return 0
+  elif [[ $selected == "nvim" ]]; then
+    selected=""
+  fi
+  NVIM_APPNAME=$selected nvim "$@"
+}
+alias nvs=nvims
+alias nva=nvim-astro
+alias nvc=nvim-chad
+alias nv=nvim-lazy
+alias nvy=nvim-yamada
+
+bindkey -s ^a "nvims\n"
+
+rxfetch
+
+# bun completions
+[ -s "/home/yamada/.bun/_bun" ] && source "/home/yamada/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

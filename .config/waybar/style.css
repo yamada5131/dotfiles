@@ -2,26 +2,28 @@
   border: none;
   border-radius: 0;
   font-family:
-    JetBrainsMono Nerd Font,
+    mononoki Nerd Font,
+    feather,
     monospace;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 15px;
   min-height: 0;
 }
 
 window#waybar {
   background: rgba(21, 18, 27, 0);
-  color: #cdd6f4;
+  background: #0b0a10;
+  border-radius: 10px;
 }
 
 #workspaces button {
-  padding: 5px;
-  color: #555869;
+  padding: 2px;
+  color: #4b475a;
   margin-right: 5px;
 }
 
 #workspaces button.active {
-  color: #a6adc8;
+  color: #e67091;
 }
 
 #workspaces button.focused {
@@ -43,7 +45,7 @@ window#waybar {
 }
 
 #window,
-#clock,
+/* #clock, */
 #battery,
 #pulseaudio,
 #network,
@@ -51,22 +53,27 @@ window#waybar {
 #memory,
 #workspaces,
 #tray,
-#backlight,
-#custom-sunset,
+/* #backlight, */
+/* #custom-sunset, */
 #custom-exchange-rate,
 #custom-rofi,
-#custom-space {
-  background: #1e1e2e;
-  padding: 0px 10px;
-  margin: 3px 0px;
-  margin-top: 5px;
+window#waybar {
+  background: #0b0a10;
+  padding: 1px 5px;
+  /* margin: 3px 0px; */
+  /* margin-top: 8px; */
   /* border: 1px solid #181825; */
 }
 
+#custom-space {
+  background: #0b0a10;
+  /* padding: 1px 2px; */
+  margin: 0px 5px;
+  /* margin-top: 5px; */
+}
+
 #backlight {
-  color: #a6adc8;
-  border-left: 0px;
-  border-right: 0px;
+  padding-right: 5px;
 }
 
 #custom-sunset {
@@ -79,20 +86,10 @@ window#waybar {
 }
 
 #workspaces {
-  background: #1e1e2e;
-  border-radius: 10px;
-  margin-left: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
   padding-right: 0px;
-  padding-left: 5px;
-}
-
-#cpu {
-  border-radius: 0px 10px 10px 0px;
-  margin-right: 10px;
-}
-
-#memory {
-  border-radius: 10px 0px 0px 10px;
+  /* padding-left: 5px; */
 }
 
 #custom-rofi {
@@ -100,14 +97,10 @@ window#waybar {
   border-radius: 10px 0px 0px 10px;
 }
 
-#window {
-  border-radius: 0px 10px 10px 0px;
-  /* margin-right: 60px; */
-}
-
 #clock {
-  color: #a6adc8;
+  color: #eae9f0;
   border-radius: 10px 10px 10px 10px;
+  padding-right: 5px;
   margin-left: 5px;
   border-right: 0px;
   margin-right: 5px;
@@ -129,6 +122,7 @@ window#waybar {
   color: #a6adc8;
   border-left: 0px;
   border-right: 0px;
+  margin-right: 5px;
 }
 
 #pulseaudio.microphone {
@@ -142,4 +136,9 @@ window#waybar {
   color: #a6adc8;
   border-radius: 0px 10px 10px 0px;
   margin-right: 10px;
+}
+
+#tray menu {
+  /* border: 1px white solid; */
+  border-radius: 10px;
 }
